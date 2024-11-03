@@ -4,7 +4,7 @@
 #include <tuple>
 #include <iomanip>
 using namespace std;
-
+//
 int villager_menu();
 
 int villager_menu(){
