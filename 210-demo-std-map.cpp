@@ -6,7 +6,7 @@ using namespace std;
 //
 int main() {
     // declarations
-    map<string, tuple<string, int, string, string> villagerColors; // key and value pair right here
+    map<string, tuple<string, int, string, string>; // key and value pair right here
 
     /*NOTE: Need to convert the vector into a tuple.
             Also changing the parameters of the villager: 
