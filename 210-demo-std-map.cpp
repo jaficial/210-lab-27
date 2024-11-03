@@ -6,7 +6,7 @@ using namespace std;
 // 
 int main() {
     // declarations
-    map<string, tuple<string, int, string, string>; // key and value pair right here
+    map<string, tuple<string, int, string, string>> villager; // key and value pair right here
 
     /*NOTE: Need to convert the vector into a tuple.
             Also changing the parameters of the villager: 
@@ -14,9 +14,8 @@ int main() {
                   string villager_species, string villager_catchphrase  */ 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
-    villagerColors["Raymond"] = {"Black", "Gray", "White"};
-    villagerColors.insert({"Marshal", {"Blue", "White", "Black"}});
+    // villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
+    
 
     // access the map using a range-based for loop
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
