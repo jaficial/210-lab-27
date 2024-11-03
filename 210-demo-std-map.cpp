@@ -2,8 +2,21 @@
 #include <map>
 #include <vector>
 #include <tuple>
+#include <iomanip>
 using namespace std;
-// 
+
+int villager_menu();
+
+int villager_menu(){
+    int choice;
+    cout << setw(10) << "" << "1. Add Villager" << endl;
+    cout << setw(10) << "" << "2. Delete Villager" << endl;
+    cout << setw(10) << "" << "3. Increase Friendship" << endl;
+    cout << setw(10) << "" << "4. Decrease Friendship" << endl;
+    cout << setw(10) << "" << "5. Search for Villager" << endl;
+    cout << setw(10) << "" << "6. Exit" << endl;
+    cin >> choice;
+}
 int main() {
     // declarations
     map<string, tuple<string, int, string, string>> villager; // key and value pair right here
@@ -16,6 +29,7 @@ int main() {
     // note how the right-hand side of the assignment are the vector elements
     // villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
     
+
 
     // access the map using a range-based for loop
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
