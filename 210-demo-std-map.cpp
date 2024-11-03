@@ -5,8 +5,10 @@ using namespace std;
 //
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors;
+    map<string, vector<string>> villagerColors; // key and value pair right here
 
+    /*NOTE: Need to convert the key-value map system into a tuple.
+             */ 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
     villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
