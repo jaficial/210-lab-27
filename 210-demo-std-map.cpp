@@ -1,14 +1,17 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <tuple>
 using namespace std;
 //
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors; // key and value pair right here
+    map<string, tuple<string, int, string, string> villagerColors; // key and value pair right here
 
-    /*NOTE: Need to convert the key-value map system into a tuple.
-             */ 
+    /*NOTE: Need to convert the vector into a tuple.
+            Also changing the parameters of the villager: 
+                - string villager_name, int friendship_points(0-10), 
+                  string villager_species, string villager_catchphrase  */ 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
     villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
