@@ -19,7 +19,7 @@ int villager_menu(){
     cout << "4. Decrease Friendship" << endl;
     cout << "5. Search for Villager" << endl;
     cout << "6. Exit" << endl;
-    cout << "Enter choice:";
+    cout << "Enter choice: ";
     cin >> choice;
     return choice;
 }
@@ -50,12 +50,11 @@ void villager_output(map<string, tuple<int, string, string>> &villager_map){
 
 int main() {
     
-    int menu_choice;
     bool menu_flag = true;
     map<string, tuple<int, string, string>> villagers; // key and value pair right here
 
     while (menu_flag){
-        menu_choice = villager_menu();
+        int menu_choice = villager_menu();
         if (menu_choice == 6){ // if the user decides to exit the program
             menu_flag = false;
         }
@@ -84,10 +83,21 @@ int main() {
         }
 
         else if (menu_choice == 2){ // if the user decides to delete a villager
+                                    // asks user for the name of the villager, then uses its name (key) to delete the villager off the map 
+            cin.ignore();
             string delete_choice;
             cout << "Who would you like to delete?" << endl << "Choice: ";
             getline(cin, delete_choice);
             villagers.erase(delete_choice);
+            villager_output(villagers);
+        }
+
+        else if (menu_choice == 3){ // Would like to increase the friendship of a villager
+            cin.ignore();
+            string villager_choice;
+            cout << "Which villager would you like to increase the friendship of?" << endl << "Choice: ";
+            getline(cin, villager_choice);
+            
         }
         
 
