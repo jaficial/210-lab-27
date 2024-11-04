@@ -97,7 +97,17 @@ int main() {
             string villager_choice;
             cout << "Which villager would you like to increase the friendship of?" << endl << "Choice: ";
             getline(cin, villager_choice);
-            
+            auto search = villagers.find(villager_choice); // CITED: From example code
+            auto& tuple_access = search->second;
+            int friendship_value = get<0>(tuple_access); // need to define int temp variable for the tuple value
+            if (friendship_value < 10){
+                get<0>(tuple_access) = get<0>(tuple_access) + 1;
+            }
+            villager_output(villagers);
+        }
+
+        else if (menu_choice == 4){ // Would like to decrease the 
+
         }
         
 
