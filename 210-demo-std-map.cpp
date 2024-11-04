@@ -1,12 +1,13 @@
 #include <iostream>
 #include <map>
+#include <utility>
 #include <vector>
 #include <tuple>
 #include <iomanip>
 using namespace std;
 //
 int villager_menu();
-void villager_output();
+void villager_output(map<string, tuple<int, string, string>> &);
 
 int villager_menu(){
     int choice;
@@ -20,14 +21,18 @@ int villager_menu(){
     cin >> choice;
 }
 
-void villager_output(map<string, tuple<string, int, string, string>> &villager_map){
+void villager_output(map<string, tuple<int, string, string>> &villager_map){
 
+/* - key of map will be the name of the villager
+   - value will be a tuple<int, string, string>
+        - int friendship_level, string species, string catchphrase
+*/
 }
 int main() {
     
     int menu_choice;
     bool menu_flag = true;
-    map<string, tuple<string, int, string, string>> villager; // key and value pair right here
+    map<string, tuple<int, string, string>> villagers; // key and value pair right here
 
     while (menu_flag){
         menu_choice = villager_menu();
@@ -36,6 +41,22 @@ int main() {
         }
         
         else if (menu_choice == 1){
+            string villager_name;
+            int villager_flevel;
+            string villager_species;
+            string villager_cphrase;
+            
+            cout << "Villager name: ";
+            getline(cin, villager_name);
+            cout << "Friendship level: ";
+            cin >> villager_flevel;
+            cout << "Species: ";
+            getline(cin, villager_species);
+            cout << "Catchphrase: ";
+            getline(cin, villager_cphrase);
+            cout << "Del added" << endl;
+
+            villagers.insert(make_pair(villager_name, tuple<villager_flevel, villager_species, villager_cphrase>));
 
         }
         
