@@ -27,12 +27,14 @@ int villager_menu(){
 /* NOTE: When outputting the map:
          - pair.first is the key
          - pair.second is the value
+         - initialize pair.second in order to access the individual elements of the tuple
 */ 
 void villager_output(map<string, tuple<int, string, string>> &villager_map){
     cout << endl;
     cout << "Villager details:" << endl;
     for (auto pair:villager_map){ 
-        cout << pair.first 
+        const auto& tuple_values = pair.second; // CITED: https://en.cppreference.com/w/cpp/utility/tuple to learn how to access individual elements of a tuple/output elements. Also learned tuple manipulation 
+        cout << pair.first << " [" << get<0>(tuple_values) << ", " << get<1>(tuple_values) << ", " << get<2>(tuple_values) << endl; 
     }
 }
 
@@ -81,51 +83,6 @@ int main() {
 
     }
 
-    // insert elements into the map
-    // note how the right-hand side of the assignment are the vector elements
-    // villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
-    
-
-
-    // access the map using a range-based for loop
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
-    for (auto pair : villagerColors) {
-        cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
-        cout << endl;
-    }
-
-    // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerColors.begin(); 
-                                               it != villagerColors.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
-        }
-        cout << endl;
-    }
-
-    // delete an element
-    villagerColors.erase("Raymond");
-
-    // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
-    auto it = villagerColors.find(searchKey);
-    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
-        cout << endl;
-    } else
-        cout << endl << searchKey << " not found." << endl;
-
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerColors.size() << endl;
-    villagerColors.clear();
-    cout << "Size after clear: " << villagerColors.size() << endl;
 
     return 0;
 }
