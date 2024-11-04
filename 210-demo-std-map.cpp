@@ -7,19 +7,19 @@
 #include <tuple>
 #include <iomanip>
 using namespace std;
-//
+
 int villager_menu();
 void villager_output(map<string, tuple<int, string, string>> &);
 
 int villager_menu(){
     int choice;
-    cout << setw(10) << "" << "1. Add Villager" << endl;
-    cout << setw(10) << "" << "2. Delete Villager" << endl;
-    cout << setw(10) << "" << "3. Increase Friendship" << endl;
-    cout << setw(10) << "" << "4. Decrease Friendship" << endl;
-    cout << setw(10) << "" << "5. Search for Villager" << endl;
-    cout << setw(10) << "" << "6. Exit" << endl;
-    cout << setw(10) << "" << "Enter choice:";
+    cout << "1. Add Villager" << endl;
+    cout << "2. Delete Villager" << endl;
+    cout << "3. Increase Friendship" << endl;
+    cout << "4. Decrease Friendship" << endl;
+    cout << "5. Search for Villager" << endl;
+    cout << "6. Exit" << endl;
+    cout << "Enter choice:";
     cin >> choice;
     return choice;
 }
@@ -31,11 +31,12 @@ int villager_menu(){
 */ 
 void villager_output(map<string, tuple<int, string, string>> &villager_map){
     cout << endl;
-    cout << "Villager details:" << endl;
+    cout << setw(5) << "" << "Villager details:" << endl;
     for (auto pair:villager_map){ 
         const auto& tuple_values = pair.second; // CITED: https://en.cppreference.com/w/cpp/utility/tuple to learn how to access individual elements of a tuple/output elements. Also learned tuple manipulation 
-        cout << pair.first << " [" << get<0>(tuple_values) << ", " << get<1>(tuple_values) << ", " << get<2>(tuple_values) << endl; 
+        cout << setw(5) << "" << pair.first << " [" << get<0>(tuple_values) << ", " << get<1>(tuple_values) << ", " << get<2>(tuple_values) << "]" << endl; 
     }
+    cout << endl;
 }
 
     /*NOTE: Need to convert the vector into a tuple.
@@ -66,18 +67,27 @@ int main() {
             string villager_cphrase;
             
             cout << "Villager name: ";
+            cin.ignore();
             getline(cin, villager_name);
             cout << "Friendship level: ";
             cin >> villager_flevel;
             cout << "Species: ";
+            cin.ignore();
             getline(cin, villager_species);
             cout << "Catchphrase: ";
             getline(cin, villager_cphrase);
-            cout << "Del added" << endl;
+            cout << villager_name << " added." << endl;
 
             tuple <int, string, string> villager_data(villager_flevel, villager_species, villager_cphrase); // must define the tuple first
             villagers.insert(make_pair(villager_name, villager_data)); // then you can pass the tuple as a parameter into the map
-            // NOTE: call output function here after writing the output function
+            villager_output(villagers);
+        }
+
+        else if (menu_choice == 2){ // if the user decides to delete a villager
+            string delete_choice;
+            cout << "Who would you like to delete?" << endl << "Choice: ";
+            getline(cin, delete_choice);
+            villagers.erase(delete_choice);
         }
         
 
