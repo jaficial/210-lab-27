@@ -22,12 +22,19 @@ int villager_menu(){
 }
 
 void villager_output(map<string, tuple<int, string, string>> &villager_map){
+    
 
+}
+
+    /*NOTE: Need to convert the vector into a tuple.
+            Also changing the parameters of the villager: 
+                - string villager_name, int friendship_points(0-10), 
+                  string villager_species, string villager_catchphrase  */ 
 /* - key of map will be the name of the villager
    - value will be a tuple<int, string, string>
         - int friendship_level, string species, string catchphrase
 */
-}
+
 int main() {
     
     int menu_choice;
@@ -40,7 +47,7 @@ int main() {
             menu_flag = false;
         }
         
-        else if (menu_choice == 1){
+        else if (menu_choice == 1){ // if the user decides to add a villager
             string villager_name;
             int villager_flevel;
             string villager_species;
@@ -56,16 +63,14 @@ int main() {
             getline(cin, villager_cphrase);
             cout << "Del added" << endl;
 
-            villagers.insert(make_pair(villager_name, tuple<villager_flevel, villager_species, villager_cphrase>));
-
+            tuple <int, string, string> villager_data(villager_flevel, villager_species, villager_cphrase); // must define the tuple first
+            villagers.insert(make_pair(villager_name, villager_data)); // then you can pass the tuple as a parameter into the map
+            // NOTE: call output function here after writing the output function
         }
         
 
     }
-    /*NOTE: Need to convert the vector into a tuple.
-            Also changing the parameters of the villager: 
-                - string villager_name, int friendship_points(0-10), 
-                  string villager_species, string villager_catchphrase  */ 
+
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
     // villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
