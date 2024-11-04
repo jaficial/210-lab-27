@@ -106,8 +106,18 @@ int main() {
             villager_output(villagers);
         }
 
-        else if (menu_choice == 4){ // Would like to decrease the 
-
+        else if (menu_choice == 4){ // Would like to decrease the friendship of a villager
+            cin.ignore();
+            string villager_choice;
+            cout << "Which villager would you like to decrease the friendship of?" << endl << "Choice: ";
+            getline(cin, villager_choice);
+            auto search = villagers.find(villager_choice);
+            auto& tuple_access = search->second;
+            int friendship_value = get<0>(tuple_access);
+            if (friendship_value > 0){
+                get<0>(tuple_access) = get<0>(tuple_access) - 1;
+            }
+            villager_output(villagers); 
         }
         
 
