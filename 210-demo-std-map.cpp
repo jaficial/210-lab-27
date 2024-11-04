@@ -1,5 +1,6 @@
 // COMSC-210 | Jed Aficial | Lab 27
 // github link: https://github.com/jaficial/210-lab-27
+
 #include <iostream>
 #include <map>
 #include <utility>
@@ -11,6 +12,7 @@ using namespace std;
 int villager_menu();
 void villager_output(map<string, tuple<int, string, string>> &);
 
+// villager_menu function displays a menu with a list of options that the user is able to choose from, then returns the int of the selected option
 int villager_menu(){
     int choice;
     cout << "1. Add Villager" << endl;
@@ -29,6 +31,7 @@ int villager_menu(){
          - pair.second is the value
          - initialize pair.second in order to access the individual elements of the tuple
 */ 
+// villager_output function iterates through the map, and outputs each key and their corresponding value
 void villager_output(map<string, tuple<int, string, string>> &villager_map){
     cout << endl;
     cout << setw(5) << "" << "Villager details:" << endl;
@@ -39,13 +42,9 @@ void villager_output(map<string, tuple<int, string, string>> &villager_map){
     cout << endl;
 }
 
-    /*NOTE: Need to convert the vector into a tuple.
-            Also changing the parameters of the villager: 
-                - string villager_name, int friendship_points(0-10), 
-                  string villager_species, string villager_catchphrase  */ 
-/* - key of map will be the name of the villager
-   - value will be a tuple<int, string, string>
-        - int friendship_level, string species, string catchphrase
+/* NOTE: - key of map will be the name of the villager
+         - value will be a tuple<int, string, string>
+            - int friendship_level, string species, string catchphrase
 */
 
 int main() {
@@ -55,6 +54,7 @@ int main() {
 
     while (menu_flag){
         int menu_choice = villager_menu();
+        cout << endl;
         if (menu_choice == 6){ // if the user decides to exit the program
             menu_flag = false;
         }
@@ -100,7 +100,7 @@ int main() {
             string villager_choice;
             cout << "Which villager would you like to increase the friendship of?" << endl << "Choice: ";
             getline(cin, villager_choice);
-            auto search = villagers.find(villager_choice); // CITED: From example code
+            auto search = villagers.find(villager_choice); // CITED: From given example code
             auto& tuple_access = search->second;
             int friendship_value = get<0>(tuple_access); // need to define int temp variable for the tuple value
             if (friendship_value < 10){ // if the friendship value of a villager is less than the max (10), add a point
@@ -135,10 +135,6 @@ int main() {
             }
             villager_output(villagers);
         }
-        
-
     }
-
-
     return 0;
 }
