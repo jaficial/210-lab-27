@@ -1,3 +1,5 @@
+// COMSC-210 | Jed Aficial | Lab 27
+// github link: https://github.com/jaficial/210-lab-27
 #include <iostream>
 #include <map>
 #include <utility>
@@ -19,11 +21,19 @@ int villager_menu(){
     cout << setw(10) << "" << "6. Exit" << endl;
     cout << setw(10) << "" << "Enter choice:";
     cin >> choice;
+    return choice;
 }
 
+/* NOTE: When outputting the map:
+         - pair.first is the key
+         - pair.second is the value
+*/ 
 void villager_output(map<string, tuple<int, string, string>> &villager_map){
-    
-
+    cout << endl;
+    cout << "Villager details:" << endl;
+    for (auto pair:villager_map){ 
+        cout << pair.first 
+    }
 }
 
     /*NOTE: Need to convert the vector into a tuple.
