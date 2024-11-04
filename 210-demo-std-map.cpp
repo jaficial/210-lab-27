@@ -84,11 +84,14 @@ int main() {
 
         else if (menu_choice == 2){ // if the user decides to delete a villager
                                     // asks user for the name of the villager, then uses its name (key) to delete the villager off the map 
-            cin.ignore();
-            string delete_choice;
-            cout << "Who would you like to delete?" << endl << "Choice: ";
-            getline(cin, delete_choice);
-            villagers.erase(delete_choice);
+            if (!villagers.empty()) // if the villagers map isn't empty, user is able to delete a villager
+            {
+                cin.ignore();
+                string delete_choice;
+                cout << "Who would you like to delete?" << endl << "Choice: ";
+                getline(cin, delete_choice);
+                villagers.erase(delete_choice);
+            }
             villager_output(villagers);
         }
 
@@ -100,7 +103,7 @@ int main() {
             auto search = villagers.find(villager_choice); // CITED: From example code
             auto& tuple_access = search->second;
             int friendship_value = get<0>(tuple_access); // need to define int temp variable for the tuple value
-            if (friendship_value < 10){
+            if (friendship_value < 10){ // if the friendship value of a villager is less than the max (10), add a point
                 get<0>(tuple_access) = get<0>(tuple_access) + 1;
             }
             villager_output(villagers);
@@ -114,10 +117,23 @@ int main() {
             auto search = villagers.find(villager_choice);
             auto& tuple_access = search->second;
             int friendship_value = get<0>(tuple_access);
-            if (friendship_value > 0){
+            if (friendship_value > 0){ // if the friendship value of a villager is greater than the minimum (0), delete a point
                 get<0>(tuple_access) = get<0>(tuple_access) - 1;
             }
             villager_output(villagers); 
+        }
+
+        else if (menu_choice == 5){ // If the user would like to search for a specific villager's contents
+            cin.ignore();
+            string villager_choice;
+            cout << "Which villager would you like to search for?" << endl << "Choice: ";
+            getline(cin, villager_choice);
+            auto search = villagers.find(villager_choice);
+            if (search != villagers.end()){ // if the villager is in the map, output the details of the searched villager
+                auto& tuple_access = search->second;
+                cout << "Searched Villager details: " << villager_choice << " [" << get<0>(tuple_access) << ", " << get<1>(tuple_access) << ", " << get<2>(tuple_access) << "]" << endl;
+            }
+            villager_output(villagers);
         }
         
 
